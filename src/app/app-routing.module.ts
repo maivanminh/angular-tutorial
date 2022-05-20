@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeRoutingModule } from './home/home-routing.module';
 import { PageErrorComponent } from './page-error/page-error.component';
+import { ReactiveFormRoutingModule } from './reactive-form/reactive-form-routing.module';
 
 const routesConfig: Routes = [
   {
@@ -22,6 +23,7 @@ const routesConfig: Routes = [
   imports: [
     CommonModule,
     HomeRoutingModule,
+    ReactiveFormRoutingModule,
     RouterModule.forRoot(routesConfig),
   ],
   exports: [RouterModule],

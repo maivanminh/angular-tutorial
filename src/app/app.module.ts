@@ -8,7 +8,7 @@ import { PageErrorComponent } from './page-error/page-error.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PageErrorComponent,
+    PageErrorComponent
   ],
   imports: [
     BrowserModule,
