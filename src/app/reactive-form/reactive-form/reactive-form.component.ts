@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -14,13 +14,13 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.rfContact = new FormGroup({
-      name: new FormControl(),
-      email: new FormControl(),
+      name: new FormControl(null,  Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
       social: new FormGroup({
-        facebook: new FormControl(),
-        alo: new FormControl(),
+        facebook: new FormControl(null,  Validators.required),
+        alo: new FormControl(null,  Validators.required),
       }),
-      tel: new FormControl(),
+      tel: new FormControl(null,  Validators.required),
 
     })
   }
