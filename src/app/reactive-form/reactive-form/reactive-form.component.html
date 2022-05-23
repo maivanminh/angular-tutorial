@@ -4,6 +4,10 @@
       <label for="">Name</label>
       <input type="text" formControlName="name">
     </div>
+    <div *ngIf="rfContact.invalid && (rfContact.dirty || rfContact.touched)">
+      <div *ngIf="rfContact.get('name')?.errors?.['required']">Vui long nhap ten</div>
+      <div *ngIf="rfContact.get('name')?.errors?.['minLength']">Vui long nhat hon 5 ky t</div>
+    </div>
     <div>
       <label for="">Email</label>
       <input type="text" formControlName="email">
@@ -14,3 +18,4 @@
   <button>Submit</button>
 </form>
 <pre>{{ rfContact.value | json}}</pre>
+<pre>{{rfContact.invalid}}</pre>
