@@ -15,12 +15,13 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit(): void {
     this.rfContact = new FormGroup({
       name: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern(/^\d+$/)]),
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      name: new FormControl(null,  Validators.required),
       social: new FormGroup({
         facebook: new FormControl(),
         alo: new FormControl(),
       }),
-      tel: new FormControl(),
+      tel: new FormControl(null,  Validators.required),
+
     })
   }
 
@@ -32,6 +33,5 @@ export class ReactiveFormComponent implements OnInit {
     console.log(this.rfContact)
     this.rfContact.reset()
   }
-
 
 }

@@ -24,7 +24,7 @@ const routesConfig: Routes = [
     CommonModule,
     HomeRoutingModule,
     ReactiveFormRoutingModule,
-    RouterModule.forRoot(routesConfig),
+    RouterModule.forRoot(routesConfig, {onSameUrlNavigation: 'reload'}),
   ],
   exports: [RouterModule],
 })
