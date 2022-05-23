@@ -1,13 +1,17 @@
 <form action="" [formGroup]="rfContact" (ngSubmit)="onSubmit()">
   <div>
-    <div>
+    <div class="form">
       <label for="">Name</label>
       <input type="text" formControlName="name">
     </div>
+<<<<<<< HEAD
     <div *ngIf="rfContact.invalid && (rfContact.dirty || rfContact.touched)">
       <div *ngIf="rfContact.get('name')?.errors?.['required']">Vui long nhap ten</div>
       <div *ngIf="rfContact.get('name')?.errors?.['minLength']">Vui long nhat hon 5 ky t</div>
     </div>
+=======
+    <small ></small>
+>>>>>>> 91dc3022a6cda4d8ad522aa070d57bb990f1c4da
     <div>
       <label for="">Email</label>
       <input type="text" formControlName="email">

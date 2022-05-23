@@ -14,13 +14,18 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.rfContact = new FormGroup({
+<<<<<<< HEAD
       name: new FormControl('', [Validators.required,  Validators.minLength(5), Validators.maxLength(10)]),
       email: new FormControl(),
+=======
+      name: new FormControl(null,  Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+>>>>>>> 91dc3022a6cda4d8ad522aa070d57bb990f1c4da
       social: new FormGroup({
-        facebook: new FormControl(),
-        alo: new FormControl(),
+        facebook: new FormControl(null,  Validators.required),
+        alo: new FormControl(null,  Validators.required),
       }),
-      tel: new FormControl(),
+      tel: new FormControl(null,  Validators.required),
 
     })
   }
