@@ -14,19 +14,24 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.rfContact = new FormGroup({
-      name: new FormControl(null,  Validators.required),
+      name: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern(/^\d+$/)]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       social: new FormGroup({
-        facebook: new FormControl(null,  Validators.required),
-        alo: new FormControl(null,  Validators.required),
+        facebook: new FormControl(),
+        alo: new FormControl(),
       }),
-      tel: new FormControl(null,  Validators.required),
-
+      tel: new FormControl(),
     })
   }
 
-  onSubmit() {
-    console.log(this.rfContact.value)
+  get f() {
+    return this.rfContact.controls
   }
+
+  onSubmit() {
+    console.log(this.rfContact)
+    this.rfContact.reset()
+  }
+
 
 }

@@ -1,10 +1,15 @@
 <form action="" [formGroup]="rfContact" (ngSubmit)="onSubmit()">
   <div>
-    <div class="form">
+    <div class="form-control">
       <label for="">Name</label>
       <input type="text" formControlName="name">
     </div>
-    <small ></small>
+    <div *ngIf="rfContact.controls.invalid && (rfContact.controls.touched || rfContact.controls.dirty)" style="color: red;">
+      <div *ngIf="rfContact.controls.name?.errors?.required">Vui long nhap ten</div>
+      <div *ngIf="f.name?.errors?.minlength">Vui long nhap ten dai hon 5 ky tu</div>
+      <div *ngIf="f['name']?.errors?.pattern">Vui long chi nhap so</div>
+
+    </div>
     <div>
       <label for="">Email</label>
       <input type="text" formControlName="email">
@@ -12,6 +17,7 @@
     <div>
     </div>
   </div>
-  <button>Submit</button>
+  <button [disabled]="rfContact.invalid">Submit</button>
 </form>
 <pre>{{ rfContact.value | json}}</pre>
+<pre>{{ rfContact.invalid | json}}</pre>
