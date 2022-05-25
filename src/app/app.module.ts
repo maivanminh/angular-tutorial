@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { PageErrorComponent } from './page-error/page-error.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageErrorComponent
+    PageErrorComponent,
   ],
   imports: [
     BrowserModule,

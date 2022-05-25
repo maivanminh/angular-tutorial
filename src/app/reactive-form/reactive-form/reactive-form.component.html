@@ -1,15 +1,54 @@
-<form action="" [formGroup]="rfContact" (ngSubmit)="onSubmit()">
-  <div>
-    <div class="form">
-      <label for="">Name</label>
-      <input type="text" formControlName="name">
+<form [formGroup]="rfContact" style="margin: 0px 10px;" (ngSubmit)="onSubmit()">
+  <div class="row-form">
+    <div class="col-md-4 mb-3">
+      <label >Name</label>
+      <input type="text" class="form-control is-invalid" formControlName="name"
+        [ngClass]="{'is-invalid': rfContact.controls.name.invalid && rfContact.controls.name.touched}" autofocus required>
+      <div  *ngIf="rfContact.controls.name.invalid && rfContact.controls.name.touched">
+        <div class="valid-feedback d-block" *ngIf="rfContact.controls.name.errors?.required">Vui long nhap ten</div>
+        <div *ngIf="rfContact.controls.name.errors?.minlength">Vui long nhap du so ky tu toi thieu</div>
+      </div>
     </div>
-    <div *ngIf="rfContact.controls.invalid && (rfContact.controls.touched || rfContact.controls.dirty)" style="color: red;">
-      <div *ngIf="rfContact.controls.name?.errors?.required">Vui long nhap ten</div>
-      <div *ngIf="f.name?.errors?.minlength">Vui long nhap ten dai hon 5 ky tu</div>
-      <div *ngIf="f['name']?.errors?.pattern">Vui long chi nhap so</div>
+    <div class="col-md-4 mb-3">
+      <label >Email</label>
+      <input type="email" class="form-control is-invalid" formControlName="email"
+        [ngClass]="{'is-invalid': f['email'].invalid && f['email'].touched}">
+      <div class="valid-feedback d-block" *ngIf="f['email'].invalid && f['email'].touched">
+        <div *ngIf="f.email.errors?.required">Vui long nhap ten</div>
+        <div *ngIf="f['email'].errors?.email">Vui long nhap dung dinh dang email</div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label >Tel</label>
+      <input type="number" class="form-control is-invalid" formControlName="tel"
+        [ngClass]="{'is-invalid': f['tel'].invalid && f['tel'].touched}">
+      <div class="valid-feedback d-block" *ngIf="f['tel'].invalid && f['tel'].touched">
+        <div *ngIf="f['tel'].errors?.required">Vui long nhap ten</div>
+        <div *ngIf="f['tel'].errors?.pattern">Vui long nhap du so ky tu toi thieu</div>
+        <div *ngIf="f['tel'].errors?.minlength">Toi da 10 ky tu</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
 
+</form>
+<!-- <form action="" [formGroup]="rfContact" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div>
+      <div col-lg-3>
+        <label for="">Name</label>
+        <input type="text" formControlName="name">
+      </div>
+      <div *ngIf="f.name.invalid && f.name.touched" style="color: red;">
+        <div *ngIf="f['name']?.errors?.required">Vui long nhap ten</div>
+        <div *ngIf="f['name']?.errors?.minlength">Vui long nhat hon 5 ky t</div>
+      </div>
     </div>
+=======
+    <small ></small>
+>>>>>>> 91dc3022a6cda4d8ad522aa070d57bb990f1c4da
     <div>
       <label for="">Email</label>
       <input type="text" formControlName="email">
@@ -17,9 +56,6 @@
     <div>
     </div>
   </div>
-  <button>Submit</button>
-  <button>Submit</button>
-  <button>Submit</button>
   <button>Submit</button>
 </form>
 <pre>{{ rfContact.value | json}}</pre>
