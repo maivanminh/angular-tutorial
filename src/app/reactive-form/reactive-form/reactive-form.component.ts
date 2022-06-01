@@ -15,13 +15,14 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.rfContact = this.fb.group({
-      name: [null, [Validators.required, Validators.minLength(4), Validators.pattern(/^\d+$/)]],
-      email: [null, Validators.required],
+      name: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
+      email: [null, [Validators.required, Validators.email]],
       social: this.fb.group({
         facebook: null,
         alo: null,
       }),
-      tel: [null, Validators.required],
+      age: [null, [Validators.required, Validators.min(18)]],
+      size: [null],
 
     })
   }
@@ -30,9 +31,18 @@ export class ReactiveFormComponent implements OnInit {
     return this.rfContact.controls
   }
 
+  options: [
+    {id: 1, name: 'minh'},
+    {id: 2, name: 'thong'},
+    {id: 3, name: 'anh'},
+  ]
 
   onSubmit() {
-    console.log(this.rfContact)
+    console.log(this.rfContact.value)
+    this.rfContact.reset()
+  }
+
+  resetForm () {
     this.rfContact.reset()
   }
 }
